@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\ShowTweets;
+use App\Http\Livewire\User\UploadPhoto;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/', ShowTweets::class)->middleware('auth');
+Route::get('/', ShowTweets::class)->middleware('auth')->name('tweets');
