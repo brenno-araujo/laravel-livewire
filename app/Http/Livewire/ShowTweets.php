@@ -36,15 +36,20 @@ class ShowTweets extends Component
     {
         $this->validate();
 
-        // Tweet::create([
-        //     'content'=> $this->content,
-        //     'user_id' => auth()->user()->id,
-        // ]);
-
         Auth()->user()->tweets()->create([
             'content' => $this->content
         ]);
 
         $this->content = '';
     }
+
+    public function like(int $idTweet)
+    {
+        $tweet = Tweet::findOrFail($idTweet);
+
+        $tweet->likesUser()->create([
+            'user_id'=> auth()->user()->id
+        ]);
+    }
+
 }
