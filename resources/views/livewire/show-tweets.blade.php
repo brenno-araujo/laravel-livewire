@@ -24,4 +24,10 @@
     @foreach ($tweets as $tweet)
         <p>{{ $tweet->user->name }} - {{ $tweet->content }}</p>
     @endforeach
+
+    <div>
+        <ul class="pagination justify-content-center">
+        {{$tweets->links()}}
+    </ul>
+    </div>
 </div>

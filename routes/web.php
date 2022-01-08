@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', ShowTweets::class);
 
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('/', ShowTweets::class)->middleware('auth');
